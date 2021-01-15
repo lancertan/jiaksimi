@@ -1,0 +1,21 @@
+agm-map {
+    height: 500px;
+}
+
+h1
+{
+    font-style: italic;
+    font-style: bold;
+    color: darkred;
+}
+
+td 
+{
+    vertical-align: bottom;
+}
+
+#button 
+{
+    text-align: center; 
+    vertical-align: middle;
+}

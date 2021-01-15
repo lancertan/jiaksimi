@@ -1,0 +1,56 @@
+<div class="row mt-2">
+	<div class="col">
+		<h1><b>Next Time Must Jiak</b></h1>
+	</div>
+</div>
+
+<div class="row mt-2">
+	<div class="col d-flex justify-content-center">
+		<img class="border img-thumbnail" [src]="imagePath" alt="" [routerLink]="['/', 'capture']">
+	</div>
+</div>
+
+<form [formGroup]="form">
+	<div class="form-group">
+		<label for="title">Title</label>
+		<input id="title" class="form-control" type="text" placeholder="Short description of food" formControlName="title">
+	</div>
+	<div class="form-group">
+		<label for="Location" class="form-label">Location</label><br>
+		<div *ngIf="!locSet"> 
+			<button class="btn btn-outline-secondary" [routerLink]="['/', 'locate']">
+				<span style="margin-right: 5px !important;">Set Location</span>
+				<i class="fas fa-map-marker-alt"></i>
+			</button>
+		</div>
+		<div *ngIf="locSet">
+			{{loc.address}} ({{loc.lat}}, {{loc.lng}}) 	
+			<button class="btn btn-outline-secondary" [routerLink]="['/', 'locate']">
+				<span style="margin-right: 5px !important;">Edit</span>
+				<i class="far fa-edit"></i>
+			</button>
+		</div>
+    </div>
+    <div class="form-group">
+        <label for="rating" class="form-label">Rating</label>
+        <input type="range" class="form-range" min="1" max="5" step="1" id="rating" formControlName="rating">
+    </div>
+    <div class="form-group">
+		<label for="comments">Comments</label>
+		<textarea id="comments"rows="5" class="form-control" placeholder="Additional notes" formControlName="comments"></textarea>
+	</div>
+	<div class="d-flex justify-content-between mt-4">
+		<button class="btn btn-lg btn-dark" (click)="back()">
+			<span style="margin-right: 5px !important;">Back</span>
+			<i class="fas fa-arrow-alt-circle-left"></i>
+		</button>
+		<button class="btn btn-lg btn-primary" [disabled]="form.invalid || !imgSet || !locSet" (click)="submit()">
+			<span style="margin-right: 5px !important;">Submit</span>
+			<i class="fas fa-hamburger"></i>
+		</button>
+		<button class="btn btn-lg btn-info" (click)="clear()">
+			<span style="margin-right: 5px !important;">Clear</span>
+			<i class="fas fa-trash-alt"></i>
+		</button>
+	</div>
+</form>

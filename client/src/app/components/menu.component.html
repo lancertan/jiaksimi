@@ -1,0 +1,119 @@
+
+<!--<h2>Jiak</h2>
+
+<button class="btn btn-lg btn-outline-danger" [routerLink]="['/', 'list']">
+    <span style="margin-right: 5px !important;">What to Jiak</span>
+    <i class="fas fa-sync"></i>
+</button><p></p>
+<button class="btn btn-lg btn-outline-danger" [routerLink]="['/', 'review']">
+    <span style="margin-right: 5px !important;">Add to Jiak List</span>
+    <i class="fas fa-sync"></i>
+</button><p></p>
+<button class="btn btn-lg btn-outline-danger">
+    <span style="margin-right: 5px !important;" [routerLink]="['/', 'feedback']">Feedback</span>
+    <i class="fas fa-sync"></i>
+</button><p></p>
+<button class="btn btn-lg btn-outline-danger" (click)="logout()">
+    <span style="margin-right: 5px !important;">Jiak Ba Liao</span>
+    <i class="fas fa-sync"></i>
+</button>
+--><br>
+<div class="col-lg-4 col-xs-12 text-center">
+    <div class="box">
+        
+        <div class="box-title">
+            <h1>Jiak</h1>
+        </div>
+        <div class="box-text">
+            <span>
+                <!--<b> Hokkien/Teochew – literal translation “eat”</b><br>
+                Jiak is a commonly used word to ask people if they have already eaten or to invite them to eat. <br>
+                It can be used to greet one another at the dinner table urging them to start eating. <br>
+                Younger family members will also greet their seniors at the dining table.<br>
+                
+                This is similar to the malay word “makan“--></span>
+        </div>
+        <div class="box-btn">
+            <br>
+        </div>
+     </div>
+</div>
+<div class="social-box">
+    <div class="container">
+     	<div class="row">
+			 
+
+				 <div class="col-lg-4 col-xs-12  text-center" [routerLink]="['/', 'list']">
+					<div class="box">
+					
+						<div class="box-title">
+							<h3>Jiak Simi</h3>
+						</div>
+						<div class="box-text">
+							<span>When you are hungry and seriously do not know what to eat.</span>
+						</div>
+						<div class="box-btn" >
+                            <button class="btn btn-outline-danger" [routerLink]="['/', 'list']">
+                                <!--<span style="margin-right: 5px !important;">Go</span>-->
+                                <i class="fas fa-question"></i>
+                            </button>
+						</div>
+					 </div>
+				</div>	 
+				
+				 <div class="col-lg-4 col-xs-12 text-center" [routerLink]="['/', 'review']">
+					<div class="box">
+                      
+						<div class="box-title">
+							<h3>Next Time Must Jiak</h3>
+						</div>
+						<div class="box-text">
+							<span>So nice until you need to record it down somewhere.</span>
+						</div>
+						<div class="box-btn">
+						    <button class="btn btn-outline-danger" [routerLink]="['/', 'review']">
+                                <!--<span style="margin-right: 5px !important;">Add to Jiak List</span>-->
+                                <i class="fas fa-thumbtack"></i>
+                            </button>
+						</div>
+					 </div>
+				</div>	 
+				
+				<div class="col-lg-4 col-xs-12 text-center" [routerLink]="['/', 'feedback']">
+					<div class="box">
+                        
+						<div class="box-title">
+							<h3>Feedback</h3>
+						</div>
+						<div class="box-text">
+							<span>If you really need to talk to someone... but we don't check our emails.</span>
+						</div>
+						<div class="box-btn">
+						    <button class="btn btn-outline-danger" [routerLink]="['/', 'feedback']">
+                                <!--<span style="margin-right: 5px !important;" >Feedback</span>-->
+                                <i class="fas fa-envelope"></i>
+                            </button>
+						</div>
+					 </div>
+				</div>	 
+				
+				 <div class="col-lg-4 col-xs-12 text-center" (click)="logout()">
+					<div class="box">
+					   
+						<div class="box-title">
+							<h3>Jiak Ba Liao</h3>
+						</div>
+						<div class="box-text">
+							<span>Eat finish can leave.</span>
+						</div>
+						<div class="box-btn">
+						    <button class="btn btn-outline-danger" (click)="logout()">
+                                <!--<span style="margin-right: 5px !important;">Jiak Ba Liao</span>-->
+                                <i class="fas fa-times"></i>
+                            </button>
+						</div>
+					 </div>
+				</div>		
+		</div>		
+    </div>
+</div>

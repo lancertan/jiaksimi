@@ -1,0 +1,27 @@
+<h1><b>Feedback</b></h1>
+
+<form [formGroup]="form">
+    <div>
+        <label for="comments">Comments</label>
+        <textarea class="form-control" id="comments" rows="5" (ngModelChange)="valueChange()" maxlength="3000" formControlName="comments"></textarea>
+    </div>
+
+    <small><mark>{{remainingText}}</mark> words remaining</small>
+    
+    <div class="row mt-2">
+        <div class="col d-flex justify-content-between">
+            <button class="btn btn-lg btn-dark" [routerLink]="['/', 'menu']">
+                <span style="margin-right: 5px !important;">Back</span>
+                <i class="fas fa-arrow-alt-circle-left"></i>
+            </button>
+            <button class="btn btn-lg btn-primary" (click)="submit()" [disabled]="form.invalid">
+                <span style="margin-right: 5px !important;">Submit</span>
+                <i class="fas fa-arrow-alt-circle-left"></i>
+            </button>
+            <button class="btn btn-lg btn-info" (click)="clear()">
+                <span style="margin-right: 5px !important;">Clear</span>
+                <i class="fas fa-trash-alt"></i>
+            </button>
+        </div>
+    </div>
+</form>

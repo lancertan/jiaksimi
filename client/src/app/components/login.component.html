@@ -1,0 +1,55 @@
+<div class="login-form">
+    <form [formGroup]="form">
+		<div class="avatar">
+			<img src="/assets/jiaksimi.png" alt="Avatar">
+		</div>
+        <h2 class="text-center">Login</h2>   
+        <div class="form-group">
+        	<input type="text" class="form-control" name="username" placeholder="Enter your username here" [ngClass]="{'is-invalid': errorMessage}" formControlName="username">
+        </div>
+		<div class="form-group">
+            <input type="password" class="form-control" name="password" placeholder="Enter your password here" [ngClass]="{'is-invalid': errorMessage}" formControlName="password">
+            <div class="invalid-feedback" *ngIf="errorMessage"> 
+                {{ errorMessage }}
+            </div>
+        </div>        
+        <div class="form-group">
+            <button type="submit" class="btn btn-primary btn-lg btn-block" (click)="login()" [disabled]="form.invalid">Sign in</button>
+        </div>
+		
+    </form>
+    
+</div>
+
+<!--
+<div class="row mt-2">
+	<div class="col">
+		<h3>Please Login</h3>
+	</div>
+</div>
+
+<form [formGroup]="form">
+    <div class="input-group mb-3">
+        <div class="input-group-prepend">
+            <span class="input-group-text" id="basic-addon3"><strong>Username</strong></span>
+        </div>
+        <input type="text" class="form-control" id="title" aria-describedby="basic-addon3" placeholder="Enter your username here" [ngClass]="{'is-invalid': errorMessage}" formControlName="username">
+    </div>
+
+    <div class="input-group mb-3">
+        <div class="input-group-prepend">
+            <span class="input-group-text" id="basic-addon3"><strong>Password</strong></span>
+        </div>
+        <input type="password" class="form-control" id="password" aria-describedby="basic-addon3" placeholder="Enter your password here" [ngClass]="{'is-invalid': errorMessage}" formControlName="password">
+        <div class="invalid-feedback" *ngIf="errorMessage"> 
+            {{ errorMessage }}
+        </div>
+    </div>
+
+	<div class="d-flex justify-content-end align-items-center mt-4">
+		<button class="btn btn-lg btn-success" (click)="login()" [disabled]="form.invalid">
+			<span style="margin-right: 5px !important;">Login</span>
+			<i class="fas fa-sign-in-alt"></i>
+		</button>
+	</div>
+</form>-->

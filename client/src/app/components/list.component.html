@@ -1,0 +1,113 @@
+<div class="container">
+
+    <h1><b>Jiak Simi</b></h1>
+  
+    <div class="form-group">
+      <label>Enter address</label>
+      <input type="text" class="form-control" (keydown.enter)="$event.preventDefault()" placeholder="Search Nearest Location" autocorrect="off" autocapitalize="off" spellcheck="off" type="text" #search>
+    </div>
+  
+    <agm-map [latitude]="latitude" [longitude]="longitude" [zoom]="zoom">
+      
+     <!--marker for the current location-->
+      <agm-marker [latitude]="latitude" [longitude]="longitude" [markerDraggable]="true" [iconUrl]='{"url": "/assets/person_marker.png","scaledSize": {"height": 50, "width": 50}}' (dragEnd)="markerDragEnd($event)"></agm-marker>
+       
+      <!--marker for the reviews-->
+        <div *ngFor="let r of reviews; let i = index" >
+            <agm-marker [latitude]="r.location.coordinates[1]" [longitude]="r.location.coordinates[0]" [iconUrl]='{"url": "/assets/food_marker.png","scaledSize": {"height": 50, "width": 50}}' (markerClick)="clickedMarker(infoWindow)">
+                <agm-info-window #infoWindow>
+                    <div>
+                        <span class="window-title"><h6>{{r.title}}</h6></span>
+                        <img src="https://final.sfo2.digitaloceanspaces.com/{{r.image}}" alt="Image" height="80" >
+                    </div>
+                </agm-info-window>
+            </agm-marker>
+        </div>
+
+      <!--marker for the hawkers-->
+      <div *ngIf="showHawkers">
+        <div *ngFor="let h of hawkers; let i = index">
+            <agm-marker [latitude]="h.lat" [longitude]="h.lng" [iconUrl]='{"url": "/assets/hawker_marker.png","scaledSize": {"height": 40, "width": 40}}' (markerClick)="clickedMarker(infoWindow)">
+                <agm-info-window #infoWindow>
+                        <strong>{{h.name}}</strong><br> 
+                        {{h.address}}
+                </agm-info-window>
+            </agm-marker>
+        </div>
+    </div>
+
+    </agm-map>
+    <div class="form-check">
+        <input class="form-check-input" type="checkbox" value="Hawker" id="flexCheckDefault" (change)="checkDisplayHawkers($event)" >
+        <label class="form-check-label" for="flexCheckDefault" >
+          Show Hawker Centers
+        </label>
+    </div>
+    <div> <strong>{{address}}</strong></div>
+    <form [formGroup]="form">
+        <div class="form-group row">
+            <div>Latitude:</div>  
+            <div class="col-sm-10">
+            <input class="form-control" type="text" id="latitude" value="{{latitude}}" readonly formControlName="lat">
+            </div>
+        </div>
+        <div class="form-group row">
+            <div>Longitude:</div>  
+            <div class="col-sm-10">
+            <input class="form-control" type="text" id="longitude" value="{{longitude}}" readonly formControlName="lng">
+            </div>
+        </div>
+        <div class="form-group row">
+            <div>Radius(meters):</div>  
+            <div class="col-sm-10">
+            <input class="form-control" type="text" id="radius" placeholder="Distance in meters" formControlName="rad">
+            </div>
+        </div>
+        <button class="btn btn-success" [disabled]="form.invalid" (click)="getReviews()">
+            <span style="margin-right: 5px !important;">Search</span>
+            <i class="fas fa-search"></i>
+        </button>
+    </form>
+    <br>
+    <table class="table table-hover"> 
+        <tbody>
+        <div *ngFor="let r of reviews; let i = index">
+            <tr>  
+                <th scope="row" width="30px">{{i+1}}</th>
+                <td text-align="center" width= "150px">
+                    <h6>{{r.title}}</h6>
+                    <img src="https://final.sfo2.digitaloceanspaces.com/{{r.image}}" height="100" alt="">
+                    
+                    <div>{{distance[i]}}m away</div>
+                </td>
+                <td width= "350px"> 
+                    <div>Address: {{r.address}}</div>
+                    <div>Comments: {{r.comments}}</div>
+                    <div>Rating: {{r.rating}}/5</div> 
+                    <p><small>Reviewed on: {{r.ts}}</small></p>
+                </td>
+                <td id="button">        
+                    <button class="btn btn-sm btn-danger" (click)="delete(i)">
+                    <span style="margin-right: 5px !important;">Delete</span>
+                    <i class="far fa-trash-alt"></i>
+                    </button> 
+                </td>
+            </tr>
+        </div>
+        </tbody>
+    </table>
+    
+</div>
+
+<div class="row mt-2">
+	<div class="col d-flex justify-content-between">
+		<button class="btn btn-lg btn-dark" [routerLink]="['/', 'menu']">
+			<span style="margin-right: 5px !important;">Back</span>
+			<i class="fas fa-arrow-alt-circle-left"></i>
+		</button>
+		<button class="btn btn-lg btn-info" (click)="reset()">
+			<span style="margin-right: 5px !important;">Reset</span>
+			<i class="fas fa-sync"></i>
+		</button>
+	</div>
+</div>
